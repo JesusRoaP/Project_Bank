@@ -1,0 +1,4 @@
+#wpbody-content ul, #wpbody-content ol {
+    list-style: revert;
+    padding: revert
+}

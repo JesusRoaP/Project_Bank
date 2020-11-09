@@ -1,0 +1,420 @@
+/* ESTILO TABLA PROYECTOS */
+
+.dataTables_wrapper {
+    color: #555;
+    font-weight: 300;
+}
+
+#tabla_dt_length {
+	color: #ccc
+}
+
+#tabla_dt_filter {
+	width: 100%;
+	text-align: center;
+	margin-bottom: 20px;
+	display: flex;
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px
+}
+
+#tabla_dt_filter label {
+	background: #ccc;
+	border-radius: 50px;
+	padding-left: 26px;
+	color: white;
+	margin: 0 auto;
+	width: 60%;
+	display: block;
+	line-height: 35px;
+}
+
+@media screen and (max-width: 540px) {
+	#tabla_dt_filter label {
+		width: 80%;
+	}
+}
+
+#tabla_dt_filter input {
+    width: 74%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 50px 50px 50px 0;
+    font-size: 12px;
+    background-image: url('../images/icono-lupa.png');
+    background-size: 15px;
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    padding: 1px 50px 1px 20px;
+    margin-left: 18px;
+    color: #555;
+    background-color: white;
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	outline: none;
+	height: 35px;
+	float: right
+}
+
+#tabla_dt_filter ::placeholder {
+	opacity: .8;
+	transition: .5s
+}
+
+#tabla_dt_filter input:focus::placeholder{
+	opacity:.5
+}
+
+#tabla_dt_filter input:hover::placeholder{
+	opacity:.5
+}
+
+#tabla_dt {
+    margin-bottom: 30px;
+    padding-left: 20px;
+    border: none;
+    width: 100% !important;
+}
+
+#tabla_dt th {
+    text-align: center;
+    border: none;
+    font-size: 14px;
+    padding: 10px 18px;
+    font-family: 'Lato', sans-serif;
+}
+
+#tabla_dt td {
+    vertical-align: middle;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: normal;
+    padding: 8px 10px;
+    font-family: 'Lato', sans-serif;
+}
+
+#tabla_dt td a, #tabla_dt td strong {
+    font-family: 'Lato', sans-serif;
+    font-size: 14px;
+    word-break: normal;
+}
+
+#tabla_dt th:first-child, #tabla_dt th:last-child {
+	width: 5% !important
+}
+
+#tabla_dt td:nth-child(2) {
+    text-align: inherit;
+}
+
+#tabla_dt_paginate span a, #tabla_dt_length select {
+	font-family: 'Lato', sans-serif;
+}
+
+#tabla_dt_paginate .paginate_button.current {
+	font-weight: bold;
+}
+
+#tabla_dt ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: block
+}
+
+
+/* Columna (<td>) PROYECTO */
+#tabla_dt .nombre-proyecto a {
+    color: #e96656;
+}
+#tabla_dt .nombre-proyecto a:hover {
+    text-decoration: underline;
+}
+
+#tabla_dt .autores {
+    padding-right: 15px;
+}
+
+#tabla_dt .autores strong {
+    font-weight: bold;
+}
+
+#tabla_dt .resumen {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: justify
+}
+
+#tabla_dt .resumen .certificado a {
+    color: #e96656;
+}
+
+#tabla_dt .ver_mas {
+	text-align: center;
+	background: #eee;
+	width: 80px;
+	margin: 0 auto;
+	margin-bottom: -8px;
+	color: #aaa;
+	font-size: 12px;
+	transition: 1s;
+	cursor: pointer;
+	border-radius: 6px 6px 0 0
+}
+#tabla_dt .ver_mas:hover {
+	background: #e30613;
+	color: #eee;
+}
+
+#tabla_dt .color-3 {
+	transition: .5s;
+	border-radius: 30px;
+	text-align: center;
+	padding: 1px 0
+}
+#tabla_dt tr:hover .color-3 {
+	filter: saturate(200%)
+}
+#tabla_dt td:nth-child(2) .color-3 {
+    padding: 5px 20px;
+}
+
+
+/* RESPONSIVE */
+@media screen and (max-width: 1110px) {
+    #tabla_dt {
+        width: 90% !important;
+    }
+
+    #tabla_dt_filter input {
+        background-size: 13px !important;
+        padding: 1px 30px 1px 20px !important;
+    }
+}
+
+@media screen and (max-width: 995px) {
+    .dtsp-verticalPanes {
+    	width: 60% !important;
+    	position: fixed;
+    	top: 0;
+    	right: 0;
+    	background: white;
+    	z-index: 101;
+    	transform: translateX(100%);
+    	transition: .5s;
+    	height: 100vh;
+    	margin-top: 0 !important;
+    	border-radius: 6px;
+    	overflow-y: scroll;
+    }
+
+    .filtros_active .dtsp-verticalPanes {
+    	transform: translateX(0)
+    }
+
+    .dtsp-panesContainer {
+    	margin-top: 0 !important;
+    	border: none !important
+    }
+
+    .oscuro_filtros {
+    	width: 100%;
+    	background-color: rgb(50 0 0 / 80%);
+    	height: 100vh;
+    	position: fixed;
+    	top: 0;
+    	left: 0;
+    	z-index: 101;
+    	transition: 0.4s;
+        opacity: 0;
+        visibility: hidden;
+    }
+
+    .filtros_active .oscuro_filtros {
+    	opacity: 1;
+    	visibility: visible
+    }
+
+    #filtrar {
+    	position: absolute;
+    	top: -50px;
+    	right: 40px;
+    	border-radius:10px;
+    	border: none;
+    	background: none;
+    	color: #888;
+    	transition: .5s;
+    	display: flex;
+    	align-items: center
+    }
+
+    #filtrar:hover {
+    	color: #e30613
+    }
+
+    #tabla_dt {
+        padding-left: 0px !important;
+    }
+
+    #tabla_dt_filter {
+        padding-left: 0px !important;
+        margin-top: 0;
+    }
+
+    .dataTables_scrollBody {
+	    height: 170px !important;
+    }
+}
+
+@media screen and (min-width: 995px) {
+    .dataTables_scrollBody {
+	    height: 100% !important;
+    }
+	
+    #filtrar {
+        display: none
+    }
+
+}
+
+@media screen and (max-width: 770px) {
+    #tabla_dt td:first-child, #tabla_dt th:first-child, #tabla_dt td:last-child, #tabla_dt th:last-child {
+        display: none
+    }
+}
+
+@media screen and (min-width: 770px) {
+    .estado-resumen {
+        display: none
+    }
+}
+
+
+/* PANEL DE FILTROS */
+.dtsp-verticalContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+ 
+.dtsp-verticalContainer .dtsp-verticalPanes, .dtsp-verticalContainer .dtsp-dataTable {
+    width: 50%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 0;
+}
+ 
+.dtsp-verticalContainer .dtsp-verticalPanes {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 10%;
+    margin-top: 50px
+}
+ 
+.dtsp-title {
+    margin-right: 0px !important;
+    margin-top: 13px !important;
+    margin-left: 10px !important
+}
+ 
+.dtsp-search {
+    min-width: 0px !important;
+    padding-left: 0px !important;
+    margin: 0px !important;
+}
+ 
+.dtsp-verticalContainer .dtsp-verticalPanes .dtsp-searchPanes {
+    flex-direction: column;
+    flex-basis: 0px;
+}
+ 
+.dtsp-verticalContainer .dtsp-verticalPanes .dtsp-searchPanes .dtsp-searchPane {
+    flex-basis: 0px;
+}
+ 
+.dtsp-verticalContainer .dtsp-dataTable {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 70%;
+}
+
+/* Personalizado Propio */
+.dtsp-columns-1:last-child, #tabla_dt th:nth-child(3), #tabla_dt td:nth-child(3), #tabla_dt th:nth-child(4), #tabla_dt td:nth-child(4), #tabla_dt th:nth-child(5), #tabla_dt td:nth-child(5), .dtsp-searchPanes thead, .dtsp-searchButtonCont, .dtsp-buttonGroup {
+	display: none !important
+}
+
+.dtsp-clearAll {
+	margin: 0 !important;
+    margin-top: 3px !important;
+    color: #555
+}
+
+.dtsp-searchPanes .dataTable {
+	border: none !important
+}
+
+.dtsp-searchPanes td {
+	text-align: left !important;
+	cursor: pointer
+}
+
+.dtsp-searchPanes td:hover {
+	background: #f0f0f0
+}
+
+.dataTable .selected {
+    background-color: #f0f0f0 !important;
+}
+
+.dtsp-selected {
+    border: 2px solid #f0f0f0 !important
+}
+
+#tabla_dt_filter {
+	padding-left: 20px
+}
+
+.dtsp-pill {
+	color: #aaa !important;
+	background-color: white !important;
+}
+
+
+/****** Animación Carga de Pagina ********/
+#contenedor_carga {
+    background: white;
+    height: 100vh;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+	position: fixed;
+	z-index: 10000;
+}
+
+#carga {
+	border: 13px solid #ccc;
+	border-top-color: #e30613;
+	border-top-style: groove;
+	height: 50px;
+	width: 50px;
+	border-radius: 50px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	position: absolute;
+	animation: girar 1.5s linear infinite;
+}
+
+@keyframes girar {
+	from { transform: rotate(0deg)}
+	to { transform: rotate(360deg)}
+}

@@ -1,0 +1,51 @@
+<?php
+/*
+Plugin Name: Banco de Proyectos
+Plugin URI:
+Description: Muestra el banco de proyectos del CINA.
+Author: Jesus Mauricio Roa Polania
+Version: 1.1
+Author URI:
+*/
+
+defined('ABSPATH') or die("Acceso Denegado");
+
+define('BP_RUTA',plugin_dir_path(__FILE__));
+
+define('BP_NOMBRE','Project Bank');
+
+include(BP_RUTA . 'includes/functions.php');
+
+include(BP_RUTA . 'includes/options.php');
+
+function bp_activar() {
+
+    /****************** Creación tabla wp_proyectos *****************/
+  
+    global $wpdb;
+    
+    $table_name = $wpdb->prefix . 'proyectos';
+   
+    $sql = "CREATE TABLE $table_name (
+        `id` int(11) NOT NULL AUTO_INCREMENT,
+        `codigo` varchar(50) NOT NULL,
+        `proyecto` varchar(255) NOT NULL,
+        `autor` varchar(255) NOT NULL,
+        `estado` varchar(50) NOT NULL,
+        `resumen` varchar(255) NOT NULL,
+        `concepto` varchar(255) NOT NULL,
+        `informe_final` varchar(255) NOT NULL,
+        `certi_cumplimiento` varchar(255) NOT NULL,
+        `area` varchar(50) NOT NULL,
+        `modalidad` varchar(50) NOT NULL,
+        PRIMARY KEY id (id)
+    ) CHARACTER SET=utf8 COLLATE=utf8_spanish_ci;";
+
+    // Revisión de existencia de la tabla
+    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
+    // Creación de la tabla
+    dbDelta($sql);
+
+}
+register_activation_hook(__FILE__,'bp_activar');
