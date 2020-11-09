@@ -3,6 +3,6 @@ if (!defined('WP_UNINSTALL_PLUGIN')) {
     die;
 }
 
-//Aqui van las instrucciones para desintalar el plugin
+//Instrucciones para desintalar el plugin Banco de Proyectos
 
 ?>
