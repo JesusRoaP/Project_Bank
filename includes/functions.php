@@ -2,24 +2,24 @@
 
 function js_css_register() {
 	/* Registro de script. */
-	wp_register_script('datatables-js', WP_PLUGIN_URL . '/banco-proyectos/includes/DataTables/datatables.js');
-	wp_register_script('searchpanes-datatables-js', WP_PLUGIN_URL . '/banco-proyectos/includes/DataTables/dataTables.searchPanes.min.js');
-	wp_register_script('select-datatables-js', WP_PLUGIN_URL . '/banco-proyectos/includes/DataTables/dataTables.select.min.js');
-	wp_register_script('banco-proyectos-js', WP_PLUGIN_URL . '/banco-proyectos/public/js/banco-proyectos.js');
-	wp_register_script('proyecto-js', WP_PLUGIN_URL . '/banco-proyectos/public/js/proyecto.js');
-	wp_register_script('admin-banco-proyectos-js', WP_PLUGIN_URL . '/banco-proyectos/public/js/admin-banco-proyectos.js');
+	wp_register_script('datatables-js', BP_URL . '/includes/DataTables/datatables.js');
+	wp_register_script('searchpanes-datatables-js', BP_URL . '/includes/DataTables/dataTables.searchPanes.min.js');
+	wp_register_script('select-datatables-js', BP_URL . '/includes/DataTables/dataTables.select.min.js');
+	wp_register_script('banco-proyectos-js', BP_URL . '/public/js/banco-proyectos.js');
+	wp_register_script('proyecto-js', BP_URL . '/public/js/proyecto.js');
+	wp_register_script('admin-banco-proyectos-js', BP_URL . '/public/js/admin-banco-proyectos.js');
 
-	wp_register_style('datatables-css', WP_PLUGIN_URL . '/banco-proyectos/includes/DataTables/datatables.css');
-	wp_register_style('searchpanes-datatables-css', WP_PLUGIN_URL . '/banco-proyectos/includes/DataTables/searchPanes.dataTables.min.css');
-	wp_register_style('select-datatables-css', WP_PLUGIN_URL . '/banco-proyectos/includes/DataTables/select.dataTables.min.css');
-	wp_register_style('banco-proyectos-css', WP_PLUGIN_URL . '/banco-proyectos/public/css/banco-proyectos.css');
-	wp_register_style('banco-proyectos-2-css', WP_PLUGIN_URL . '/banco-proyectos/public/css/banco-proyectos-2.css');
-	wp_register_style('proyecto-css', WP_PLUGIN_URL . '/banco-proyectos/public/css/proyecto.css');
-	wp_register_style('admin-banco-proyectos-css', WP_PLUGIN_URL . '/banco-proyectos/public/css/admin-banco-proyectos.css');
-	wp_register_style('iconos-css', WP_PLUGIN_URL . '/banco-proyectos/public/css/iconos.css');
+	wp_register_style('datatables-css', BP_URL . '/includes/DataTables/datatables.css');
+	wp_register_style('searchpanes-datatables-css', BP_URL . '/includes/DataTables/searchPanes.dataTables.min.css');
+	wp_register_style('select-datatables-css', BP_URL . '/includes/DataTables/select.dataTables.min.css');
+	wp_register_style('banco-proyectos-css', BP_URL . '/public/css/banco-proyectos.css');
+	wp_register_style('banco-proyectos-2-css', BP_URL . '/public/css/banco-proyectos-2.css');
+	wp_register_style('proyecto-css', BP_URL . '/public/css/proyecto.css');
+	wp_register_style('admin-banco-proyectos-css', BP_URL . '/public/css/admin-banco-proyectos.css');
+	wp_register_style('iconos-css', BP_URL . '/public/css/iconos.css');
 	wp_register_style('fuente-lato', 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 	wp_register_style('material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons');
-	wp_register_style('admin-css', WP_PLUGIN_URL . '/banco-proyectos/admin/css/admin.css');
+	wp_register_style('admin-css', BP_URL . '/admin/css/admin.css');
 }
 add_action('init', 'js_css_register');
 
@@ -178,9 +178,9 @@ function admin_banco_proyectos() {
 	wp_enqueue_script('datatables-js');
 	wp_enqueue_script('admin-banco-proyectos-js');
 
-	wp_localize_script('admin-banco-proyectos-js','proyecto_newedit',['ajaxurl'=> WP_PLUGIN_URL . '/banco-proyectos/includes/proyecto.newedit.php']);
-	wp_localize_script('admin-banco-proyectos-js','proyecto_save',['ajaxurl'=> WP_PLUGIN_URL . '/banco-proyectos/includes/proyecto.save.php']);
-	wp_localize_script('admin-banco-proyectos-js','proyecto_delete',['ajaxurl'=> WP_PLUGIN_URL . '/banco-proyectos/includes/proyecto.delete.php']);
+	wp_localize_script('admin-banco-proyectos-js','proyecto_newedit',['ajaxurl'=> BP_URL . '/includes/proyecto.newedit.php']);
+	wp_localize_script('admin-banco-proyectos-js','proyecto_save',['ajaxurl'=> BP_URL . '/includes/proyecto.save.php']);
+	wp_localize_script('admin-banco-proyectos-js','proyecto_delete',['ajaxurl'=> BP_URL . '/includes/proyecto.delete.php']);
 
 	include_once('importacion-masiva.php');
 	include_once('actualizacion-masiva.php');

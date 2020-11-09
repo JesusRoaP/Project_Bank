@@ -12,6 +12,8 @@ defined('ABSPATH') or die("Acceso Denegado");
 
 define('BP_RUTA',plugin_dir_path(__FILE__));
 
+define('BP_URL', WP_PLUGIN_URL . '/project_bank');
+
 define('BP_NOMBRE','Project Bank');
 
 include(BP_RUTA . 'includes/functions.php');
