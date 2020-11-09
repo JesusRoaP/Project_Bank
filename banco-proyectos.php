@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: Banco de Proyectos
-Plugin URI:
+Plugin URI: https://github.com/JesusRoaP/project_bank
 Description: Muestra el banco de proyectos del CINA.
 Author: Jesus Mauricio Roa Polania
 Version: 1.1
-Author URI:
+Author URI: https://github.com/JesusRoaP
 */
 
 defined('ABSPATH') or die("Acceso Denegado");
