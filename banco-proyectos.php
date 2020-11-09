@@ -49,3 +49,10 @@ function bp_activar() {
 
 }
 register_activation_hook(__FILE__,'bp_activar');
+
+function bp_desactivar() {
+
+// Instrucciones para desactivar el plugin banco de proyectos
+
+}
+register_deactivation_hook(__FILE__,'bp_desactivar');
