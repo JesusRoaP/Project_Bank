@@ -1,6 +1,6 @@
 # project_bank
 
-Plugin para crear, mostrar y administrar la tabla wp_proyectos de la base de datos de wordpress.
+Plugin para crear, mostrar y administrar la tabla wp_project de la base de datos de wordpress.
 
 Utiliza el siguiente shortcode para mostrar la tabla wp_project (esta será la página principal del plugin): [project_bank]
 
