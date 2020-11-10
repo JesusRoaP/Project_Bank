@@ -1,8 +1,8 @@
 <?php
 /*
-Plugin Name: Banco de Proyectos
+Plugin Name: Project Bank
 Plugin URI: https://github.com/JesusRoaP/project_bank
-Description: Muestra el banco de proyectos del CINA.
+Description: Crea, muestra y administra la tabla wp_proyectos de la base de datos de wordpress.
 Author: Jesus Mauricio Roa Polania
 Version: 1.1
 Author URI: https://github.com/JesusRoaP
@@ -16,6 +16,8 @@ define('BP_URL', WP_PLUGIN_URL . '/project_bank');
 
 define('BP_NOMBRE','Project Bank');
 
+define('BP_TABLE','project');
+
 include(BP_RUTA . 'includes/functions.php');
 
 include(BP_RUTA . 'includes/options.php');
@@ -26,7 +28,7 @@ function bp_activar() {
   
     global $wpdb;
     
-    $table_name = $wpdb->prefix . 'proyectos';
+    $table_name = $wpdb->prefix . BP_TABLE;
    
     $sql = "CREATE TABLE $table_name (
         `id` int(11) NOT NULL AUTO_INCREMENT,

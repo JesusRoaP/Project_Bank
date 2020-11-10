@@ -26,7 +26,7 @@ add_action('init', 'js_css_register');
 function my_shortcode_styles() {
     global $post;
 
-    if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'banco_proyectos' ) ) {
+    if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'project_bank' ) ) {
 		wp_enqueue_style( 'datatables-css' );
 		wp_enqueue_style( 'searchpanes-datatables-css' );
 		wp_enqueue_style( 'select-datatables-css' );
@@ -36,13 +36,13 @@ function my_shortcode_styles() {
 		wp_enqueue_style( 'material-icons' );
 	}
 	
-	if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'proyecto' ) ) {
+	if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'project' ) ) {
 		wp_enqueue_style( 'proyecto-css' );
 		wp_enqueue_style( 'iconos-css' );
 		wp_enqueue_style( 'fuente-lato' );
 	}
 	
-	if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'admin_banco_proyectos' ) ) {
+	if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'project_bank_admin' ) ) {
 		wp_enqueue_style( 'datatables-css' );
 		wp_enqueue_style( 'iconos-css' );
 		wp_enqueue_style( 'admin-banco-proyectos-css' );
@@ -63,7 +63,9 @@ function banco_proyectos() {
 	wp_enqueue_script('select-datatables-js');
 
 	global $wpdb;
-	$row = $wpdb->get_results( "SELECT * FROM wp_proyectos" );
+	$table_name = $wpdb->prefix . BP_TABLE;
+
+	$row = $wpdb->get_results( "SELECT * FROM $table_name" );
 
 	echo
 	"<div id='contenedor_carga'>
@@ -120,15 +122,18 @@ function banco_proyectos() {
 	</table>";
 
 }
-add_shortcode('banco_proyectos', 'banco_proyectos');
+add_shortcode('project_bank', 'banco_proyectos');
 
 function proyecto() {
 
 	wp_enqueue_script('proyecto-js');
 
 	global $wpdb;
+	
+	$table_name = $wpdb->prefix . BP_TABLE;
 	$codigo = $_GET['codigo'];
-	$row = $wpdb->get_results( "SELECT * FROM wp_proyectos WHERE codigo LIKE '$codigo'" );
+
+	$row = $wpdb->get_results( "SELECT * FROM $table_name WHERE codigo LIKE '$codigo'" );
 
 	foreach($row as $rows) {
 
@@ -165,7 +170,7 @@ function proyecto() {
 	}
 
 }
-add_shortcode('proyecto', 'proyecto');
+add_shortcode('project', 'proyecto');
 
 function cambiar_titulo_pagina_proyecto() {
 	$codigo = $_GET['codigo'];
@@ -186,7 +191,9 @@ function admin_banco_proyectos() {
 	include_once('actualizacion-masiva.php');
 
 	global $wpdb;
-	$row = $wpdb->get_results( "SELECT * FROM wp_proyectos" );
+	$table_name = $wpdb->prefix . BP_TABLE;
+
+	$row = $wpdb->get_results( "SELECT * FROM $table_name" );
 
 	echo
 	"<div class='bg'></div>
@@ -251,6 +258,6 @@ function admin_banco_proyectos() {
 	<div class='modalFormProyecto'></div>";
 
 }
-add_shortcode('admin_banco_proyectos', 'admin_banco_proyectos');
+add_shortcode('project_bank_admin', 'admin_banco_proyectos');
 
 ?>

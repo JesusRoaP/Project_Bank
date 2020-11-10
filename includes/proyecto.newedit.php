@@ -2,10 +2,12 @@
 require_once(dirname(dirname(dirname(dirname(dirname(__FILE__))))) . '/wp-load.php'); 
 
 $id = $_GET['id'];
+$table_name = $wpdb->prefix . BP_TABLE;
+
 global $wpdb;
 
 if($id > 0) {
-  $result = $wpdb->get_results($wpdb->prepare("SELECT * FROM wp_proyectos WHERE id LIKE '$id'"));
+  $result = $wpdb->get_results($wpdb->prepare("SELECT * FROM $table_name WHERE id LIKE '$id'"));
 
 foreach($result as $row) {
 ?>

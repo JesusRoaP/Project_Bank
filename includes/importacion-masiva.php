@@ -8,6 +8,8 @@ use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 global $wpdb;
 
+$table_name = $wpdb->prefix . BP_TABLE;
+
 if (isset($_POST["import"])) {
        
     $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
@@ -38,7 +40,7 @@ if (isset($_POST["import"])) {
 
             $codigo = $worksheet->getCell('A' . $row)->getValue();
 
-            $sql = $wpdb->query($wpdb->prepare( "SELECT * FROM wp_proyectos WHERE codigo LIKE '$codigo'"));
+            $sql = $wpdb->query($wpdb->prepare( "SELECT * FROM $table_name WHERE codigo LIKE '$codigo'"));
 
             if ($sql == 0) {
                 $codigo = $wpdb->_real_escape($worksheet->getCell('A' . $row)->getValue());
@@ -52,7 +54,7 @@ if (isset($_POST["import"])) {
                 $area = $wpdb->_real_escape($worksheet->getCell('I' . $row)->getValue()); 
                 $modalidad = $wpdb->_real_escape($worksheet->getCell('J' . $row)->getValue());
 
-                $r = $wpdb->query($wpdb->prepare( "INSERT INTO wp_proyectos (`codigo`, `proyecto`, `autor`, `estado`, `resumen`, `concepto`, `informe_final`, `certi_cumplimiento`, `area`, `modalidad`) VALUES ('$codigo','$proyecto','$autor','$estado','$resumen','$concepto','$informe_final','$certi_cumplimiento','$area','$modalidad')"));
+                $r = $wpdb->query($wpdb->prepare( "INSERT INTO $table_name (`codigo`, `proyecto`, `autor`, `estado`, `resumen`, `concepto`, `informe_final`, `certi_cumplimiento`, `area`, `modalidad`) VALUES ('$codigo','$proyecto','$autor','$estado','$resumen','$concepto','$informe_final','$certi_cumplimiento','$area','$modalidad')"));
                 
                 if ($r) {
                     $type = "success";

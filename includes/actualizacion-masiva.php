@@ -8,6 +8,8 @@ use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
 
 global $wpdb;
 
+$table_name = $wpdb->prefix . BP_TABLE;
+
 if (isset($_POST["update"])) {
        
     $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
@@ -38,7 +40,7 @@ if (isset($_POST["update"])) {
    
             $codigo = $worksheet->getCell('A' . $row)->getValue();
 
-            $sql = $wpdb->query($wpdb->prepare("SELECT * FROM wp_proyectos WHERE codigo LIKE '$codigo'"));      
+            $sql = $wpdb->query($wpdb->prepare("SELECT * FROM $table_name WHERE codigo LIKE '$codigo'"));      
    
             if ($sql > 0) {
                 $proyecto = $wpdb->_real_escape($worksheet->getCell('B' . $row)->getValue());
@@ -51,7 +53,7 @@ if (isset($_POST["update"])) {
                 $area = $wpdb->_real_escape($worksheet->getCell('I' . $row)->getValue()); 
                 $modalidad = $wpdb->_real_escape($worksheet->getCell('J' . $row)->getValue());
    
-                $r = $wpdb->query($wpdb->prepare("UPDATE wp_proyectos SET `proyecto`='$proyecto',`autor`='$autor',`estado`='$estado',`resumen`='$resumen',`concepto`='$concepto',`informe_final`='$informe_final',`certi_cumplimiento`='$certi_cumplimiento',`area`='$area',`modalidad`='$modalidad' WHERE codigo LIKE '$codigo'"));
+                $r = $wpdb->query($wpdb->prepare("UPDATE $table_name SET `proyecto`='$proyecto',`autor`='$autor',`estado`='$estado',`resumen`='$resumen',`concepto`='$concepto',`informe_final`='$informe_final',`certi_cumplimiento`='$certi_cumplimiento',`area`='$area',`modalidad`='$modalidad' WHERE codigo LIKE '$codigo'"));
    
                 if ($r) {
                     $type = "success";
