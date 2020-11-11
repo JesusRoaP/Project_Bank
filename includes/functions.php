@@ -9,7 +9,7 @@ function js_css_register() {
 	wp_register_script('proyecto-js', BP_URL . '/public/js/proyecto.js');
 	wp_register_script('admin-banco-proyectos-js', BP_URL . '/public/js/admin-banco-proyectos.js');
 
-	wp_register_style('datatables-css', BP_URL . '/includes/DataTables/datatables.css');
+	wp_register_style('datatables-pb-css', BP_URL . '/includes/DataTables/datatables.css');
 	wp_register_style('searchpanes-datatables-css', BP_URL . '/includes/DataTables/searchPanes.dataTables.min.css');
 	wp_register_style('select-datatables-css', BP_URL . '/includes/DataTables/select.dataTables.min.css');
 	wp_register_style('banco-proyectos-css', BP_URL . '/public/css/banco-proyectos.css');
@@ -27,7 +27,7 @@ function my_shortcode_styles() {
     global $post;
 
     if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'project_bank' ) ) {
-		wp_enqueue_style( 'datatables-css' );
+		wp_enqueue_style( 'datatables-pb-css' );
 		wp_enqueue_style( 'searchpanes-datatables-css' );
 		wp_enqueue_style( 'select-datatables-css' );
 		wp_enqueue_style( 'banco-proyectos-css' );
@@ -43,7 +43,7 @@ function my_shortcode_styles() {
 	}
 	
 	if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'project_bank_admin' ) ) {
-		wp_enqueue_style( 'datatables-css' );
+		wp_enqueue_style( 'datatables-pb-css' );
 		wp_enqueue_style( 'iconos-css' );
 		wp_enqueue_style( 'admin-banco-proyectos-css' );
     }
@@ -205,14 +205,14 @@ function admin_banco_proyectos() {
 	<button type='button' class='button lateral showForm' href='#'>Nuevo proyecto</button><hr>
 	<form action='' method='post' id='update' enctype='multipart/form-data'>
 		<button type='submit' name='update' class='btn-update lateral'>Actualización Masiva</button>
-		<label for='update-file' class='btn btn-sm btn-default glyphicon glyphicon-paperclip'></label>
+		<label for='update-file' class='btn-sm btn-default glyphicon glyphicon-paperclip'></label>
 		<input type='file' name='file' id='update-file' accept='.xls,.xlsx'>
 		<span>Formato permitido (.xlsx)</span>
 	</form>
 	<hr>
 	<form action='' method='post' id='import' enctype='multipart/form-data'>
 		<button type='submit' name='import' class='btn-import lateral'>Importación Masiva</button>
-		<label for='import-file' class='btn btn-sm btn-default glyphicon glyphicon-paperclip'></label>
+		<label for='import-file' class='btn-sm btn-default glyphicon glyphicon-paperclip'></label>
 		<input type='file' name='file' id='import-file' accept='.xls,.xlsx'>
 		<span>Formato permitido (.xlsx)</span>
 	</form>

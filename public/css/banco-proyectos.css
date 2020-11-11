@@ -80,38 +80,45 @@
     text-align: center;
     border: none;
     font-size: 14px;
-    padding: 10px 18px;
+    padding: 10px 18px !important;
     font-family: 'Lato', sans-serif;
 }
 
-#tabla_dt td {
+#tabla_dt_wrapper td {
     vertical-align: middle;
     border-left: none;
     border-top: none;
     border-right: none;
-    border-bottom: 1px solid #ddd;
-    text-align: center;
+    border-bottom: 1px solid #ddd !important;
     font-size: 14px;
     letter-spacing: normal;
-    padding: 8px 10px;
+    padding: 8px 10px !important;
+}
+
+#tabla_dt_wrapper #tabla_dt td {
+    text-align: center;
     font-family: 'Lato', sans-serif;
 }
 
-#tabla_dt td a, #tabla_dt td strong {
+#tabla_dt_wrapper #tabla_dt .proyecto {
+    text-align: left;
+}
+
+#tabla_dt td a, body #tabla_dt td strong {
     font-family: 'Lato', sans-serif;
     font-size: 14px;
     word-break: normal;
 }
 
-#tabla_dt th:first-child, #tabla_dt th:last-child {
-	width: 5% !important
+#tabla_dt th:first-child, body #tabla_dt th:last-child {
+	width: 15% !important
 }
 
 #tabla_dt td:nth-child(2) {
     text-align: inherit;
 }
 
-#tabla_dt_paginate span a, #tabla_dt_length select {
+#tabla_dt_paginate span a, body #tabla_dt_length select {
 	font-family: 'Lato', sans-serif;
 }
 
@@ -132,7 +139,7 @@
     color: #e96656;
 }
 #tabla_dt .nombre-proyecto a:hover {
-    text-decoration: underline;
+    text-decoration: underline !important;
 }
 
 #tabla_dt .autores {
@@ -184,20 +191,151 @@
 }
 
 
+/* PANEL DE FILTROS */
+.dtsp-verticalContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-content: flex-start;
+    align-items: flex-start;
+}
+ 
+.dtsp-verticalContainer .dtsp-verticalPanes, .dtsp-verticalContainer .dtsp-dataTable {
+    width: 50%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 0;
+}
+ 
+.dtsp-verticalContainer .dtsp-verticalPanes {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 10%;
+    margin-top: 50px
+}
+
+#tabla_dt_wrapper .dtsp-verticalContainer .dtsp-verticalPanes td {
+    font-family: 'Lato', sans-serif;
+}
+ 
+#tabla_dt_wrapper .dtsp-title {
+    margin-left: 10px
+}
+ 
+#tabla_dt_wrapper .dtsp-search {
+    padding-left: 0px;
+    margin: 0px;
+}
+ 
+.dtsp-verticalContainer .dtsp-verticalPanes .dtsp-searchPanes {
+    flex-direction: column;
+    flex-basis: 0px;
+}
+ 
+.dtsp-verticalContainer .dtsp-verticalPanes .dtsp-searchPanes .dtsp-searchPane {
+    flex-basis: 0px;
+}
+ 
+.dtsp-verticalContainer .dtsp-dataTable {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 70%;
+}
+
+/* Personalizado Propio */
+#tabla_dt th:nth-child(3), #tabla_dt td:nth-child(3), #tabla_dt th:nth-child(4), #tabla_dt td:nth-child(4), #tabla_dt th:nth-child(5), #tabla_dt td:nth-child(5), .dtsp-searchPanes thead {
+	display: none
+}
+
+#tabla_dt_wrapper .dtsp-columns-1:last-child {
+	display: none !important
+}
+
+#tabla_dt_wrapper .dtsp-clearAll {
+	margin: 0;
+    margin-top: 3px;
+    color: #555
+}
+
+.dtsp-searchPanes .dataTable {
+	border: none
+}
+
+.dtsp-searchPanes td {
+	cursor: pointer;
+
+}
+
+.dtsp-searchPanes td:hover {
+	background: #f0f0f0
+}
+
+#tabla_dt_wrapper .dataTable .selected {
+    background-color: #f0f0f0;
+}
+
+#tabla_dt_wrapper .dtsp-selected {
+    border: 2px solid #f0f0f0
+}
+
+#tabla_dt_filter {
+	padding-left: 20px
+}
+
+#tabla_dt_wrapper .dtsp-pill {
+	color: #aaa;
+	background-color: white;
+}
+
+
+/****** AnimaciÃ³n Carga de Pagina ********/
+#contenedor_carga {
+    background: white;
+    height: 100vh;
+    width: 100%;
+    top: 0px;
+    left: 0px;
+	position: fixed;
+	z-index: 10000;
+}
+
+#carga {
+	border: 13px solid #ccc;
+	border-top-color: #e30613;
+	border-top-style: groove;
+	height: 50px;
+	width: 50px;
+	border-radius: 50px;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin: auto;
+	position: absolute;
+	animation: girar 1.5s linear infinite;
+}
+
+@keyframes girar {
+	from { transform: rotate(0deg)}
+	to { transform: rotate(360deg)}
+}
+
+
 /* RESPONSIVE */
 @media screen and (max-width: 1110px) {
-    #tabla_dt {
-        width: 90% !important;
+    #tabla_dt_wrapper #tabla_dt {
+        width: 90% !important
     }
 
-    #tabla_dt_filter input {
-        background-size: 13px !important;
-        padding: 1px 30px 1px 20px !important;
+    #tabla_dt_wrapper #tabla_dt_filter input {
+        background-size: 13px;
+        padding: 1px 30px 1px 20px;
     }
 }
 
 @media screen and (max-width: 995px) {
-    .dtsp-verticalPanes {
+    #tabla_dt_wrapper .dtsp-verticalPanes {
     	width: 60% !important;
     	position: fixed;
     	top: 0;
@@ -207,18 +345,18 @@
     	transform: translateX(100%);
     	transition: .5s;
     	height: 100vh;
-    	margin-top: 0 !important;
+    	margin-top: 0;
     	border-radius: 6px;
     	overflow-y: scroll;
     }
 
-    .filtros_active .dtsp-verticalPanes {
+    .filtros_active #tabla_dt_wrapper .dtsp-verticalPanes {
     	transform: translateX(0)
     }
 
-    .dtsp-panesContainer {
-    	margin-top: 0 !important;
-    	border: none !important
+    #tabla_dt_wrapper .dtsp-panesContainer {
+    	margin-top: 0;
+    	border: none
     }
 
     .oscuro_filtros {
@@ -257,11 +395,11 @@
     }
 
     #tabla_dt {
-        padding-left: 0px !important;
+        padding-left: 0px;
     }
 
     #tabla_dt_filter {
-        padding-left: 0px !important;
+        padding-left: 0px;
         margin-top: 0;
     }
 
@@ -291,130 +429,4 @@
     .estado-resumen {
         display: none
     }
-}
-
-
-/* PANEL DE FILTROS */
-.dtsp-verticalContainer {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    align-content: flex-start;
-    align-items: flex-start;
-}
- 
-.dtsp-verticalContainer .dtsp-verticalPanes, .dtsp-verticalContainer .dtsp-dataTable {
-    width: 50%;
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: 0;
-}
- 
-.dtsp-verticalContainer .dtsp-verticalPanes {
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 10%;
-    margin-top: 50px
-}
- 
-.dtsp-title {
-    margin-right: 0px !important;
-    margin-top: 13px !important;
-    margin-left: 10px !important
-}
- 
-.dtsp-search {
-    min-width: 0px !important;
-    padding-left: 0px !important;
-    margin: 0px !important;
-}
- 
-.dtsp-verticalContainer .dtsp-verticalPanes .dtsp-searchPanes {
-    flex-direction: column;
-    flex-basis: 0px;
-}
- 
-.dtsp-verticalContainer .dtsp-verticalPanes .dtsp-searchPanes .dtsp-searchPane {
-    flex-basis: 0px;
-}
- 
-.dtsp-verticalContainer .dtsp-dataTable {
-    flex-grow: 1;
-    flex-shrink: 0;
-    flex-basis: 70%;
-}
-
-/* Personalizado Propio */
-.dtsp-columns-1:last-child, #tabla_dt th:nth-child(3), #tabla_dt td:nth-child(3), #tabla_dt th:nth-child(4), #tabla_dt td:nth-child(4), #tabla_dt th:nth-child(5), #tabla_dt td:nth-child(5), .dtsp-searchPanes thead, .dtsp-searchButtonCont, .dtsp-buttonGroup {
-	display: none !important
-}
-
-.dtsp-clearAll {
-	margin: 0 !important;
-    margin-top: 3px !important;
-    color: #555
-}
-
-.dtsp-searchPanes .dataTable {
-	border: none !important
-}
-
-.dtsp-searchPanes td {
-	text-align: left !important;
-	cursor: pointer
-}
-
-.dtsp-searchPanes td:hover {
-	background: #f0f0f0
-}
-
-.dataTable .selected {
-    background-color: #f0f0f0 !important;
-}
-
-.dtsp-selected {
-    border: 2px solid #f0f0f0 !important
-}
-
-#tabla_dt_filter {
-	padding-left: 20px
-}
-
-.dtsp-pill {
-	color: #aaa !important;
-	background-color: white !important;
-}
-
-
-/****** Animación Carga de Pagina ********/
-#contenedor_carga {
-    background: white;
-    height: 100vh;
-    width: 100%;
-    top: 0px;
-    left: 0px;
-	position: fixed;
-	z-index: 10000;
-}
-
-#carga {
-	border: 13px solid #ccc;
-	border-top-color: #e30613;
-	border-top-style: groove;
-	height: 50px;
-	width: 50px;
-	border-radius: 50px;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	margin: auto;
-	position: absolute;
-	animation: girar 1.5s linear infinite;
-}
-
-@keyframes girar {
-	from { transform: rotate(0deg)}
-	to { transform: rotate(360deg)}
 }

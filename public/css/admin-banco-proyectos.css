@@ -1,4 +1,58 @@
-.bg{
+#wpo-mainbody table {
+	border: none
+}
+
+#wpo-mainbody table th {
+	border: none
+}
+
+#wpo-mainbody table td {
+	vertical-align: middle;
+	border: none;
+	border-bottom: 1px solid #cccccc
+}
+
+#tabla_dt_filter {
+	width: 75%;
+	text-align: center;
+	margin-bottom: 20px;
+	display: flex;
+	font-family: 'Raleway', sans-serif;
+	font-size: 16px
+}
+
+#tabla_dt_filter label {
+	background: #ccc;
+	border-radius: 50px;
+	padding-left: 26px;
+	color: white;
+	width: 60%;
+	display: block;
+	line-height: 35px;
+}
+
+#tabla_dt_filter input {
+    width: 74%;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 50px 50px 50px 0;
+    font-size: 12px;
+    background-image: url('../images/icono-lupa.png');
+    background-size: 15px;
+    background-position: 95% 50%;
+    background-repeat: no-repeat;
+    padding: 1px 50px 1px 20px;
+    margin-left: 18px;
+    color: #555;
+    background-color: white;
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	outline: none;
+	height: 35px;
+	float: right
+}
+
+.bg {
   background-color: #000;
   opacity: .7;
   width: 100%;
@@ -25,13 +79,14 @@
 #formProyecto {
   margin-top: 30px;
 }
-.hideForm {
+#wpo-mainbody .hideForm {
   position: absolute;
   right: 20px;
   top: 20px;
 }
 
-.site-content .btn-toolbar {
+#tabla_dt_wrapper .btn-toolbar {
+	display: flex;
 	justify-content: center;
 }
 
@@ -55,17 +110,17 @@
 	max-width:100%;
 	min-width:100%;
 }
-.form label{
+.form label {
     display:block;
 }
 
-.site-content .btn-default {
+#wpo-mainbody .btn-default {
   color: #333333;
   background-color: #e7e7e7;
-  border-color: #cccccc;
+  border: 1px solid #cccccc
 }
 
-.site-content .btn-default:hover, #tabla_dt .btn-default:focus, #tabla_dt .btn-default:active {
+#wpo-mainbody .btn-default:hover, #wpo-mainbody .btn-default:focus, #wpo-mainbody .btn-default:active {
   background-color:#cecece;
   border-color:#adadad
 }
@@ -80,15 +135,14 @@
   z-index: -1;
 }
 
-
-.site-content .lateral {
-	min-width: 250px;
+.lateral {
+    min-width: 250px;
 	padding: 12px 24px;
   line-height: inherit;
   transition: .5s;
 }
 
-.site-content .lateral:hover {
+.lateral:hover {
   background-color: #e30613;
   color: white;
   border-color: #b3050f;
