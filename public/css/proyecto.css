@@ -1,34 +1,40 @@
-.site-content {
-	font-family: 'Lato', sans-serif !important;
-	color: #555
+body #wpo-mainbody {
+	font-family: 'Lato', sans-serif;
+	color: #555;
+	font-size: 18px
 }
 
-.site-content ul {
+body #wpo-mainbody a, body #wpo-mainbody p, body #wpo-mainbody li, body #wpo-mainbody strong {
+	font-family: 'Lato', sans-serif;
+	font-size: 18px
+}
+
+#wpo-mainbody ul {
     list-style-type: none;
-    margin: 0 !important;
+    margin: 0;
     padding: 0;
     display: block;
 }
 
-.site-content .col-sm-8 hr {
+#wpo-mainbody .col-sm-8 hr {
 	margin-top: 30px;
 	margin-bottom: 30px
 }
 
-.site-content a {
-    color: #e96656 !important;
+body #wpo-mainbody a {
+    color: #e96656;
 }
 
 .id {
 	margin-top: 30px
 }
 
-.proyecto {
+#wpo-mainbody .proyecto {
 	padding-bottom: 15px;
     margin: 40px 0 0;
     border-bottom: 1px solid #eee;
-    color: #e96656 !important;
-    font-family: 'Lato', sans-serif !important;
+    color: #e96656;
+    font-family: 'Lato', sans-serif;
 }
 
 .autores {
