@@ -173,8 +173,15 @@ function proyecto() {
 add_shortcode('project', 'proyecto');
 
 function cambiar_titulo_pagina_proyecto() {
+	
 	$codigo = $_GET['codigo'];
-	return get_the_title() . " " . "$codigo" . " - Banco de Proyectos - " . get_bloginfo( 'name' ); 
+
+	if (isset($codigo)) {
+		$project_page_name = get_the_title() . " " . "$codigo" . " - Banco de Proyectos - " . get_bloginfo( 'name' ); 
+	}
+
+	return $project_page_name;
+	
 }
 add_filter('pre_get_document_title', 'cambiar_titulo_pagina_proyecto');
 
