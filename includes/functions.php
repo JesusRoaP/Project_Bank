@@ -56,7 +56,6 @@ function my_shortcode_styles_admin() {
 add_action( 'admin_enqueue_scripts', 'my_shortcode_styles_admin' );
 
 function banco_proyectos() {
-	
 	wp_enqueue_script('banco-proyectos-js');	
 	wp_enqueue_script('datatables-js');
 	wp_enqueue_script('searchpanes-datatables-js');
@@ -120,12 +119,10 @@ function banco_proyectos() {
 	echo
 		"</tbody>
 	</table>";
-
 }
 add_shortcode('project_bank', 'banco_proyectos');
 
 function proyecto() {
-
 	wp_enqueue_script('proyecto-js');
 
 	global $wpdb;
@@ -136,7 +133,6 @@ function proyecto() {
 	$row = $wpdb->get_results( "SELECT * FROM $table_name WHERE codigo LIKE '$codigo'" );
 
 	foreach($row as $rows) {
-
 		echo
 			"<h3 class='proyecto'>"."$rows->proyecto"."</h3>
         	<div class='row'>
@@ -166,27 +162,37 @@ function proyecto() {
                     <div class='resumen'><strong>Resumen: </strong>"."$rows->resumen"."</div>
                 </div>
             </div>";
-
 	}
-
 }
 add_shortcode('project', 'proyecto');
 
-function cambiar_titulo_pagina_proyecto() {
-	
-	$codigo = $_GET['codigo'];
+function filter_project_title_content($title) {
+    $codigo = $_GET['codigo'];
+    if(  is_page('Proyecto') ) {
+        $title = "Proyecto " . $codigo;
+    }
+    return $title;
+}
+add_filter('the_title', 'filter_project_title_content');
 
+function filter_project_wpseo_title($title) {
+    if(  is_page('Proyecto') ) {
+        $title = get_the_title() . " - Banco de Proyectos - " . get_bloginfo( 'name' );
+    }
+    return $title;
+}
+add_filter('wpseo_title', 'filter_project_wpseo_title');
+
+function filter_project_title() {
+	$codigo = $_GET['codigo'];
 	if (isset($codigo)) {
 		$project_page_name = get_the_title() . " " . "$codigo" . " - Banco de Proyectos - " . get_bloginfo( 'name' ); 
 	}
-
 	return $project_page_name;
-	
 }
-add_filter('pre_get_document_title', 'cambiar_titulo_pagina_proyecto');
+add_filter('pre_get_document_title', 'filter_project_title');
 
 function admin_banco_proyectos() {
-	
 	wp_enqueue_script('datatables-js');
 	wp_enqueue_script('admin-banco-proyectos-js');
 
@@ -263,7 +269,6 @@ function admin_banco_proyectos() {
 	</div>
 	</div>
 	<div class='modalFormProyecto'></div>";
-
 }
 add_shortcode('project_bank_admin', 'admin_banco_proyectos');
 

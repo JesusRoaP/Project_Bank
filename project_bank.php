@@ -32,16 +32,16 @@ function bp_activar() {
    
     $sql = "CREATE TABLE $table_name (
         `id` int(11) NOT NULL AUTO_INCREMENT,
-        `codigo` varchar(50) NOT NULL,
-        `proyecto` varchar(255) NOT NULL,
-        `autor` varchar(255) NOT NULL,
-        `estado` varchar(50) NOT NULL,
-        `resumen` varchar(255) NOT NULL,
+        `codigo` varchar(30) NOT NULL,
+        `proyecto` varchar(300) NOT NULL,
+        `autor` varchar(300) NOT NULL,
+        `estado` varchar(30) NOT NULL,
+        `resumen` varchar(2000) NOT NULL,
         `concepto` varchar(255) NOT NULL,
         `informe_final` varchar(255) NOT NULL,
         `certi_cumplimiento` varchar(255) NOT NULL,
-        `area` varchar(50) NOT NULL,
-        `modalidad` varchar(50) NOT NULL,
+        `area` varchar(30) NOT NULL,
+        `modalidad` varchar(30) NOT NULL,
         PRIMARY KEY id (id)
     ) CHARACTER SET=utf8 COLLATE=utf8_spanish_ci;";
 
