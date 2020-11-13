@@ -20,6 +20,7 @@ function js_css_register() {
 	wp_register_style('fuente-lato', 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 	wp_register_style('material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons');
 	wp_register_style('admin-css', BP_URL . '/admin/css/admin.css');
+	wp_register_style('fontawesome-free-5-css', BP_URL . '/includes/fontawesome-free-5.15.1/css/all.css');
 }
 add_action('init', 'js_css_register');
 
@@ -34,12 +35,14 @@ function my_shortcode_styles() {
 		wp_enqueue_style( 'iconos-css' );
 		wp_enqueue_style( 'fuente-lato' );
 		wp_enqueue_style( 'material-icons' );
+		wp_enqueue_style( 'fontawesome-free-5-css' );
 	}
 	
 	if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'project' ) ) {
 		wp_enqueue_style( 'proyecto-css' );
 		wp_enqueue_style( 'iconos-css' );
 		wp_enqueue_style( 'fuente-lato' );
+		wp_enqueue_style( 'fontawesome-free-5-css' );
 	}
 	
 	if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'project_bank_admin' ) ) {
@@ -96,13 +99,13 @@ function banco_proyectos() {
 					<hr>
 					<ul class='certificado vc_row wpb_row vc_row-fluid row '>
 						<li class='concepto'>                        
-							<a href='"."$rows->concepto"."' title='Concepto Comité de Ética' target='_blank'><i aria-hidden='true' class='glyphicon glyphicon-file'></i> Concepto Comité de Ética</a>
+							<a href='"."$rows->concepto"."' title='Concepto Comité de Ética' target='_blank'> Concepto Comité de Ética</a>
 						</li>
 						<li class='informe_final'>                          
-							<a href='"."$rows->informe_final"."' title='Informe Final' target='_blank'><i aria-hidden='true' class='glyphicon glyphicon-file'></i> Informe Final</a>
+							<a href='"."$rows->informe_final"."' title='Informe Final' target='_blank'> Informe Final</a>
 						</li>
 						<li class='cumplimiento'>                          
-							<a href='"."$rows->certi_cumplimiento"."' title='Certificado Cumplimiento' target='_blank'><i aria-hidden='true' class='glyphicon glyphicon-file'></i> Certificado de Cumplimiento</a>
+							<a href='"."$rows->certi_cumplimiento"."' title='Certificado Cumplimiento' target='_blank'> Certificado de Cumplimiento</a>
 						</li>
 					</ul>
 				</div>
@@ -134,7 +137,8 @@ function proyecto() {
 
 	foreach($row as $rows) {
 		echo
-			"<h3 class='proyecto'>"."$rows->proyecto"."</h3>
+			"<div id='proyecto-individual'>
+			<h3 class='proyecto'>"."$rows->proyecto"."</h3>
         	<div class='row'>
 
                 <div class='col-sm-4'>
@@ -161,7 +165,8 @@ function proyecto() {
                     <hr>
                     <div class='resumen'><strong>Resumen: </strong>"."$rows->resumen"."</div>
                 </div>
-            </div>";
+			</div>
+			</div>";
 	}
 }
 add_shortcode('project', 'proyecto');
@@ -217,6 +222,7 @@ function admin_banco_proyectos() {
 
 	echo
 	"<div class='bg'></div>
+	<div id='admin-banco-proyectos'>
 	<div class='row'>
 	<div class='col-sm-4'>
 	<div id='response' class='"."$type"." "."display-block'>
@@ -275,7 +281,8 @@ function admin_banco_proyectos() {
 	</table>
 	</div>
 	</div>
-	<div class='modalFormProyecto'></div>";
+	</div>
+	<div id='formularioProyecto'><div class='modalFormProyecto'></div></div>";
 }
 add_shortcode('project_bank_admin', 'admin_banco_proyectos');
 

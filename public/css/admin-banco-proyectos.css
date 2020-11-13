@@ -1,12 +1,12 @@
-#wpo-mainbody table {
+#tabla_dt_wrapper table {
 	border: none
 }
 
-#wpo-mainbody table th {
+#tabla_dt_wrapper table th {
 	border: none
 }
 
-#wpo-mainbody table td {
+#tabla_dt_wrapper table td {
 	vertical-align: middle;
 	border: none;
 	border-bottom: 1px solid #cccccc
@@ -79,10 +79,11 @@
 #formProyecto {
   margin-top: 30px;
 }
-#wpo-mainbody .hideForm {
+#formularioProyecto .hideForm {
   position: absolute;
   right: 20px;
   top: 20px;
+  padding: 10px
 }
 
 #tabla_dt_wrapper .btn-toolbar {
@@ -114,13 +115,13 @@
     display:block;
 }
 
-#wpo-mainbody .btn-default {
+#admin-banco-proyectos .btn-default {
   color: #333333;
   background-color: #e7e7e7;
   border: 1px solid #cccccc
 }
 
-#wpo-mainbody .btn-default:hover, #wpo-mainbody .btn-default:focus, #wpo-mainbody .btn-default:active {
+#admin-banco-proyectos .btn-default:hover, #wpo-mainbody .btn-default:focus, #wpo-mainbody .btn-default:active {
   background-color:#cecece;
   border-color:#adadad
 }
