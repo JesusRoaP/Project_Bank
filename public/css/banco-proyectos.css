@@ -133,6 +133,14 @@
     display: block
 }
 
+.concepto::before, .informe_final::before, .cumplimiento::before {
+    content: "\f1c1";
+    font-family: "Font Awesome 5 Free";
+    font-size: 15px;
+    margin-right: 3px;
+    color: #e96656
+}
+
 
 /* Columna (<td>) PROYECTO */
 #tabla_dt .nombre-proyecto a {
@@ -140,6 +148,7 @@
 }
 #tabla_dt .nombre-proyecto a:hover {
     text-decoration: underline !important;
+    color: #e30613
 }
 
 #tabla_dt .autores {
@@ -158,6 +167,10 @@
 
 #tabla_dt .resumen .certificado a {
     color: #e96656;
+}
+#tabla_dt .resumen .certificado a:hover {
+    text-decoration: underline !important;
+    color: #e30613
 }
 
 #tabla_dt .ver_mas {
@@ -289,7 +302,7 @@
 }
 
 
-/****** AnimaciÃ³n Carga de Pagina ********/
+/****** Animacion Carga de Pagina ********/
 #contenedor_carga {
     background: white;
     height: 100vh;
