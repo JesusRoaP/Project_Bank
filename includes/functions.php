@@ -146,13 +146,13 @@ function proyecto() {
 					<hr>
                     <ul class='certificado vc_row wpb_row vc_row-fluid row '>
                         <li class='concepto'>                        
-                    	    <a href='"."$rows->concepto"."' title='Concepto Comité de Ética' target='_blank'><i aria-hidden='true' class='glyphicon glyphicon-file'></i> Concepto Comité de Ética</a>
+                    	    <a href='"."$rows->concepto"."' title='Concepto Comité de Ética' target='_blank'> Concepto Comité de Ética</a>
                         </li>
                         <li class='informe_final'>                          
-                            <a href='"."$rows->informe_final"."' title='Informe Final' target='_blank'><i aria-hidden='true' class='glyphicon glyphicon-file'></i> Informe Final</a>
+                            <a href='"."$rows->informe_final"."' title='Informe Final' target='_blank'> Informe Final</a>
                         </li>
                         <li class='cumplimiento'>                          
-                            <a href='"."$rows->certi_cumplimiento"."' title='Certificado Cumplimiento' target='_blank'><i aria-hidden='true' class='glyphicon glyphicon-file'></i> Certificado de Cumplimiento</a>
+                            <a href='"."$rows->certi_cumplimiento"."' title='Certificado Cumplimiento' target='_blank'> Certificado de Cumplimiento</a>
                         </li>
                     </ul>
                 </div>
