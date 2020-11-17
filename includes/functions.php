@@ -49,6 +49,7 @@ function my_shortcode_styles() {
 		wp_enqueue_style( 'datatables-pb-css' );
 		wp_enqueue_style( 'iconos-css' );
 		wp_enqueue_style( 'admin-banco-proyectos-css' );
+		wp_enqueue_style( 'login' );
     }
 }
 add_action( 'wp_enqueue_scripts', 'my_shortcode_styles' );
@@ -222,7 +223,8 @@ function admin_banco_proyectos() {
 
 	if ( is_user_logged_in() ) {
         $current_user = wp_get_current_user();
-        echo "¡Bienvenid@ " . $current_user->user_login . "! <a href='". wp_logout_url(get_permalink()) ."' class='log-out'>Cerrar Sesión</a>
+		echo
+		"<header id='header-admin'>¡Bienvenid@ " . $current_user->user_login . "! <a href='". wp_logout_url(get_permalink()) ."' class='log-out'>Cerrar Sesión</a></header>
 		<hr>
 		<div class='bg'></div>
 		<div id='admin-banco-proyectos'>
@@ -285,7 +287,10 @@ function admin_banco_proyectos() {
 		</div>
 		<div id='formularioProyecto'><div class='modalFormProyecto'></div></div>";
 	} else {
+		echo "<div class='login wp-core-ui'>
+		<div id='login'>";
 		wp_login_form();
+		echo "</div></div>";
 	}
 }
 add_shortcode('project_bank_admin', 'admin_banco_proyectos');

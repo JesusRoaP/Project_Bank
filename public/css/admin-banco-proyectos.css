@@ -171,7 +171,7 @@
   margin-bottom: 30px
 }
 
-.log-out {
+#header-admin .log-out {
   float: right;
   padding: 10px 24px;
   line-height: inherit;
@@ -181,7 +181,11 @@
   border-color: #b3050f;
 }
 
-.log-out:hover {
+#header-admin .log-out:hover {
   filter: saturate(80%);
   color: white
+}
+
+body #login {
+  padding: 0
 }
