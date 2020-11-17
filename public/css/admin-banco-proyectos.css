@@ -170,3 +170,18 @@
   border-left: 8px solid #a5f9ca;
   margin-bottom: 30px
 }
+
+.log-out {
+  float: right;
+  padding: 10px 24px;
+  line-height: inherit;
+  transition: .5s;
+  background-color: #e30613;
+  color: white;
+  border-color: #b3050f;
+}
+
+.log-out:hover {
+  filter: saturate(80%);
+  color: white
+}
