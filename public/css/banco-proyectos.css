@@ -21,7 +21,6 @@
 #tabla_dt_filter label {
 	background: #ccc;
 	border-radius: 50px;
-	padding-left: 26px;
 	color: white;
 	margin: 0 auto;
 	width: 60%;
@@ -36,7 +35,7 @@
 }
 
 #tabla_dt_filter input {
-    width: 74%;
+    width: 75%;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 50px 50px 50px 0;
@@ -46,7 +45,7 @@
     background-position: 95% 50%;
     background-repeat: no-repeat;
     padding: 1px 50px 1px 20px;
-    margin-left: 18px;
+    margin-left: 0px;
     color: #555;
     background-color: white;
 	font-family: 'Raleway', sans-serif;
@@ -61,12 +60,8 @@
 	transition: .5s
 }
 
-#tabla_dt_filter input:focus::placeholder{
-	opacity:.5
-}
-
-#tabla_dt_filter input:hover::placeholder{
-	opacity:.5
+#tabla_dt_filter input:focus::placeholder, #tabla_dt_filter input:hover::placeholder {
+	opacity: .5
 }
 
 #tabla_dt {
