@@ -117,7 +117,6 @@ function banco_proyectos() {
 			<td class='estado-oculto'>"."$rows->estado"."</td>
 			<td class='estado'><div class='color-3'>"."$rows->estado"."</div></td>
 		</tr>";
-
 	}
 
 	echo
