@@ -259,7 +259,7 @@
 }
 
 /* Personalizado Propio */
-#tabla_dt th:nth-child(3), #tabla_dt td:nth-child(3), #tabla_dt th:nth-child(4), #tabla_dt td:nth-child(4), #tabla_dt th:nth-child(5), #tabla_dt td:nth-child(5), .dtsp-searchPanes thead {
+.dtsp-searchPanes thead {
 	display: none
 }
 

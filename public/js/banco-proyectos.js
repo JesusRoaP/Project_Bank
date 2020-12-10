@@ -60,6 +60,25 @@ jQuery(document).ready(function() {
                     header: 'Estado'
                 },
                 targets: [4]
+            },
+            {
+                targets: [2],
+                visible: false,
+                searchable: false
+            },
+            {
+                targets: [3],
+                visible: false,
+                searchable: false
+            },
+            {
+                targets: [4],
+                visible: false,
+                searchable: false
+            },
+            {
+                targets: [5],
+                searchable: false
             }
         ]
     });
