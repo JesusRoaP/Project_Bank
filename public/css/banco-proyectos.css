@@ -180,8 +180,15 @@
 	cursor: pointer;
 	border-radius: 6px 6px 0 0
 }
+#tabla_dt .ver_mas a {
+	color: #aaa;
+	font-size: 12px;
+	transition: 1s;
+}
 #tabla_dt .ver_mas:hover {
 	background: #e30613;
+}
+#tabla_dt .ver_mas:hover a {
 	color: #eee;
 }
 
@@ -254,10 +261,6 @@
 /* Personalizado Propio */
 #tabla_dt th:nth-child(3), #tabla_dt td:nth-child(3), #tabla_dt th:nth-child(4), #tabla_dt td:nth-child(4), #tabla_dt th:nth-child(5), #tabla_dt td:nth-child(5), .dtsp-searchPanes thead {
 	display: none
-}
-
-#tabla_dt_wrapper .dtsp-columns-1:last-child {
-	display: none !important
 }
 
 #tabla_dt_wrapper .dtsp-clearAll {
@@ -431,10 +434,44 @@
     #tabla_dt td:first-child, #tabla_dt th:first-child, #tabla_dt td:last-child, #tabla_dt th:last-child {
         display: none
     }
+
+    .proyecto {
+    	position: relative;
+    	overflow-x: hidden
+    }
+    .proyecto .color-3 {
+    	position: absolute;
+    	top: 0;
+    	right: 0;
+    	visibility: hidden;
+    	transition: .5s;
+    	opacity: 0;
+    	transform: translateX(100%);
+    	width: 150px;
+    	cursor: pointer
+    }
+    .estado-responsive {
+    	content: "";
+    	border: 4px solid;
+    	padding: 5px;
+    	position: absolute;
+    	top: 10px;
+    	right: 10px;
+    	border-radius: 100%;
+    	cursor: pointer;
+    }
+    .estado-responsive:hover .color-3 {
+    	visibility: visible;
+    	opacity: 1;
+    	transform: translateX(0)
+    }
+    #tabla_dt .autores, #tabla_dt .nombre-proyecto {
+    padding-right: 25px;
+}
 }
 
 @media screen and (min-width: 770px) {
-    .estado-resumen {
+    .estado-responsive {
         display: none
     }
 }

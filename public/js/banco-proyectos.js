@@ -8,36 +8,20 @@ jQuery(document).ready(function() {
 
     if (finalizado) {
         finalizado.css({'background-color': '#D5F5E3'});
+        finalizado.closest('.proyecto').find('.estado-responsive').css({'border-color': '#acf5cc'});
     } 
     if (cancelado) {
         cancelado.css({'background-color': '#EFEBE9'});
-        cancelado.closest('.resumen').find('.certificado').css({'display': 'none'});
+        cancelado.closest('.proyecto').find('.estado-responsive').css({'border-color': '#dad7d6'});
     }
     if (noAprobado) {
         noAprobado.css({'background-color': '#FADBD8'});
-        noAprobado.closest('.resumen').find('.certificado .informe_final').css({'display': 'none'});
-        noAprobado.closest('.resumen').find('.certificado .cumplimiento').css({'display': 'none'});
+        noAprobado.closest('.proyecto').find('.estado-responsive').css({'border-color': '#f7bbb5'});
     }
     if (enEjecucion) {
         enEjecucion.css({'background-color': '#FCF3CF'});
-        enEjecucion.closest('.resumen').find('.certificado .informe_final').css({'display': 'none'});
-        enEjecucion.closest('.resumen').find('.certificado .cumplimiento').css({'display': 'none'});
+        enEjecucion.closest('.proyecto').find('.estado-responsive').css({'border-color': '#f9eaac'});
     }
-
-    // Creacion del slide 'Ver más'
-    jQuery("#tabla_dt .resumen").hide();
-    
-    jQuery('#tabla_dt .ver_mas').click(function () {
-        jQuery(this).prev().slideToggle('slow');
-        jQuery(this).toggleClass('ocultar');
-  
-        if (jQuery(this).hasClass('ocultar')) {
-          jQuery(this).text('Ver menos');
-        }
-        else {
-          jQuery(this).text('Ver más');
-        }
-    });
 
 	// Configuraciones DataTables
 
@@ -48,6 +32,7 @@ jQuery(document).ready(function() {
             cascadePanes: true,
             viewTotal: true, // Problema: ralentiza la busqueda en tiempo real
             controls: false,
+            columns:[2,3,4],
         },
         dom: '<"dtsp-verticalContainer"<"dtsp-verticalPanes"P><"dtsp-dataTable"frtip>>',
         pageLength: 20,

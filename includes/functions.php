@@ -95,22 +95,8 @@ function banco_proyectos() {
 			<td class='proyecto'>
 				<div class='nombre-proyecto'><a href='proyecto/?codigo="."$rows->codigo"."' target='_blank'>"."$rows->proyecto"."</a></div>
 				<div class='autores'><strong>Autores: </strong>"."$rows->autor"."</div>
-				<div class='resumen'><strong>Resumen: </strong>"."$rows->resumen"."
-					<div class='estado-resumen'><hr><strong>Estado: </strong><span class='color-3'>"."$rows->estado"."</span></div>
-					<hr>
-					<ul class='certificado vc_row wpb_row vc_row-fluid row '>
-						<li class='concepto'>                        
-							<a href='"."$rows->concepto"."' title='Concepto Comité de Ética' target='_blank'> Concepto Comité de Ética</a>
-						</li>
-						<li class='informe_final'>                          
-							<a href='"."$rows->informe_final"."' title='Informe Final' target='_blank'> Informe Final</a>
-						</li>
-						<li class='cumplimiento'>                          
-							<a href='"."$rows->certi_cumplimiento"."' title='Certificado Cumplimiento' target='_blank'> Certificado de Cumplimiento</a>
-						</li>
-					</ul>
-				</div>
-				<div class='ver_mas'>Ver más</div>
+				<div class='estado-responsive'><span class='color-3'>"."$rows->estado"."</span></div>
+				<div class='ver_mas'><a href='proyecto/?codigo="."$rows->codigo"."' target='_blank'>Ver más</a></div>
 			</td>
 			<td class='modalidad-oculto'>"."$rows->modalidad"."</td>
 			<td class='area-oculto'>"."$rows->area"."</td>
