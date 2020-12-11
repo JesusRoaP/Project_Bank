@@ -5,6 +5,7 @@ function js_css_register() {
 	wp_register_script('datatables-js', BP_URL . '/includes/DataTables/datatables.js');
 	wp_register_script('searchpanes-datatables-js', BP_URL . '/includes/DataTables/dataTables.searchPanes.min.js');
 	wp_register_script('select-datatables-js', BP_URL . '/includes/DataTables/dataTables.select.min.js');
+	wp_register_script('accent-neutralise-js', BP_URL . '/includes/DataTables/accent-neutralise.js');
 	wp_register_script('banco-proyectos-js', BP_URL . '/public/js/banco-proyectos.js');
 	wp_register_script('proyecto-js', BP_URL . '/public/js/proyecto.js');
 	wp_register_script('admin-banco-proyectos-js', BP_URL . '/public/js/admin-banco-proyectos.js');
@@ -64,6 +65,7 @@ function banco_proyectos() {
 	wp_enqueue_script('datatables-js');
 	wp_enqueue_script('searchpanes-datatables-js');
 	wp_enqueue_script('select-datatables-js');
+	wp_enqueue_script('accent-neutralise-js');
 
 	global $wpdb;
 	$table_name = $wpdb->prefix . BP_TABLE;
