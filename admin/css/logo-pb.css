@@ -1,0 +1,16 @@
+@font-face {
+  font-family: 'logo-project-bank';
+  src:  url('../fonts/logo-project-bank.eot?l6wg19');
+  src:  url('../fonts/logo-project-bank.eot?l6wg19#iefix') format('embedded-opentype'),
+    url('../fonts/logo-project-bank.ttf?l6wg19') format('truetype'),
+    url('../fonts/logo-project-bank.woff?l6wg19') format('woff'),
+    url('../fonts/logo-project-bank.svg?l6wg19#logo-project-bank') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+li#toplevel_page_project_bank-admin-configuration .wp-menu-image:before {
+  content: "\1f323";
+  font-family: 'logo-project-bank' !important;
+}

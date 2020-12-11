@@ -22,6 +22,7 @@ function js_css_register() {
 	wp_register_style('material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons');
 	wp_register_style('admin-css', BP_URL . '/admin/css/admin.css');
 	wp_register_style('fontawesome-free-5-css', BP_URL . '/includes/fontawesome-free-5.15.1/css/all.css');
+	wp_register_style('logo-pb-css', BP_URL . '/admin/css/logo-pb.css');
 }
 add_action('init', 'js_css_register');
 
@@ -57,6 +58,7 @@ add_action( 'wp_enqueue_scripts', 'my_shortcode_styles' );
 
 function my_shortcode_styles_admin() {
 	wp_enqueue_style( 'admin-css' );
+	wp_enqueue_style( 'logo-pb-css' );
 }
 add_action( 'admin_enqueue_scripts', 'my_shortcode_styles_admin' );
 
