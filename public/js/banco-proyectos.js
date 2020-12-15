@@ -101,6 +101,17 @@ jQuery(document).ready(function() {
     
     jQuery('.dtsp-clearAll').addClass('material-icons');
 
+    var oTable = jQuery('#tabla_dt').dataTable();
+    jQuery('div.dataTables_filter input').unbind();
+    jQuery('div.dataTables_filter input').bind('keyup', function(e) {
+        if(this.value.length >= 3 || e.keyCode == 13) {
+            oTable.fnFilter(this.value);
+        }
+
+        if(this.value == "") { 
+            oTable.fnFilter("").draw(); 
+        } 
+    });
 });
 
 // Animación de carga de la página Banco de Proyectos
