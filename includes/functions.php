@@ -97,10 +97,10 @@ function banco_proyectos() {
 		"<tr>
 			<td>"."$rows->codigo"."</td>
 			<td class='proyecto'>
-				<div class='nombre-proyecto'><a href='proyecto/?codigo="."$rows->codigo"."' target='_blank'>"."$rows->proyecto"."</a></div>
+				<div class='nombre-proyecto'><a href='proyecto/codigo/"."$rows->codigo"."/' target='_blank'>"."$rows->proyecto"."</a></div>
 				<div class='autores'><strong>Autores: </strong>"."$rows->autor"."</div>
 				<div class='estado-responsive'><span class='color-3'>"."$rows->estado"."</span></div>
-				<div class='ver_mas'><a href='proyecto/?codigo="."$rows->codigo"."' target='_blank'>Ver más</a></div>
+				<div class='ver_mas'><a href='proyecto/codigo/"."$rows->codigo"."/' target='_blank'>Ver más</a></div>
 			</td>
 			<td class='modalidad-oculto'>"."$rows->modalidad"."</td>
 			<td class='area-oculto'>"."$rows->area"."</td>
@@ -116,13 +116,19 @@ function banco_proyectos() {
 }
 add_shortcode('project_bank', 'banco_proyectos');
 
+function rewrite_projects_permalinks() {
+    global $wp;
+    $wp->add_query_var('codigo');
+    add_rewrite_rule( '(.?.+?)/codigo/([^/]*)/?$', 'index.php?pagename=$matches[1]&codigo=$matches[2]', 'top' );
+}
+add_action( 'init', 'rewrite_projects_permalinks' );
+
 function proyecto() {
 	wp_enqueue_script('proyecto-js');
 
 	global $wpdb;
-	
 	$table_name = $wpdb->prefix . BP_TABLE;
-	$codigo = $_GET['codigo'];
+	$codigo = get_query_var('codigo');
 
 	$row = $wpdb->get_results( "SELECT * FROM $table_name WHERE codigo LIKE '$codigo'" );
 
@@ -163,7 +169,7 @@ function proyecto() {
 add_shortcode('project', 'proyecto');
 
 function filter_project_title_content( $titulo ) {
-	$codigo = $_GET['codigo'];
+	$codigo = get_query_var('codigo');
 	if ( is_page('Proyecto codigo') ) {
 		$titulo = str_replace('codigo', $codigo, $titulo);
 	}
