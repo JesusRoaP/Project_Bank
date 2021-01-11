@@ -209,9 +209,6 @@ function admin_banco_proyectos() {
 	wp_localize_script('admin-banco-proyectos-js','proyecto_save',['ajaxurl'=> BP_URL . '/includes/proyecto.save.php']);
 	wp_localize_script('admin-banco-proyectos-js','proyecto_delete',['ajaxurl'=> BP_URL . '/includes/proyecto.delete.php']);
 
-	include_once('importacion-masiva.php');
-	include_once('actualizacion-masiva.php');
-
 	global $wpdb;
 	$table_name = $wpdb->prefix . BP_TABLE;
 
@@ -288,6 +285,9 @@ function admin_banco_proyectos() {
 		wp_login_form();
 		echo "</div></div>";
 	}
+
+	require_once('importacion-masiva.php');
+	require_once('actualizacion-masiva.php');
 }
 add_shortcode('project_bank_admin', 'admin_banco_proyectos');
 

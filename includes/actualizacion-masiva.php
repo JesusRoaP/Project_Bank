@@ -1,14 +1,7 @@
 <?php
 
-require_once(dirname(dirname(dirname(dirname(dirname(__FILE__))))) . '/wp-load.php'); 
-
 require_once('vendor/autoload.php');
-
 use PhpOffice\PhpSpreadsheet\Reader\Xlsx;
-
-global $wpdb;
-
-$table_name = $wpdb->prefix . BP_TABLE;
 
 if (isset($_POST["update"])) {
        
