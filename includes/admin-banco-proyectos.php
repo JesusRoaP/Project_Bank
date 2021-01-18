@@ -1,4 +1,9 @@
 <?php
+global $wpdb;
+$table_name = $wpdb->prefix . BP_TABLE;
+
+include_once('actions.php');
+    
 if ( is_user_logged_in() ) {
     $current_user = wp_get_current_user();
     echo
@@ -11,16 +16,17 @@ if ( is_user_logged_in() ) {
     <div id='response' class='"."$type"." "."display-block'>
         "."$message"."
     </div>
-    <button type='button' class='button lateral showForm' href='#'>Nuevo proyecto</button><hr>
+    <button type='button' class='button lateral showForm'>Nuevo proyecto</button>  
+    <hr>
     <form action='' method='post' id='update' enctype='multipart/form-data'>
-        <button type='submit' name='update' class='btn-update lateral'>Actualización Masiva</button>
+        <button type='submit' name='massive-update' class='btn-update lateral'>Actualización Masiva</button>
         <label for='update-file' class='btn-sm btn-default glyphicon glyphicon-paperclip'></label>
         <input type='file' name='file' id='update-file' accept='.xls,.xlsx'>
         <span>Formato permitido (.xlsx)</span>
     </form>
     <hr>
     <form action='' method='post' id='import' enctype='multipart/form-data'>
-        <button type='submit' name='import' class='btn-import lateral'>Importación Masiva</button>
+        <button type='submit' name='massive-import' class='btn-import lateral'>Importación Masiva</button>
         <label for='import-file' class='btn-sm btn-default glyphicon glyphicon-paperclip'></label>
         <input type='file' name='file' id='import-file' accept='.xls,.xlsx'>
         <span>Formato permitido (.xlsx)</span>
@@ -47,12 +53,18 @@ if ( is_user_logged_in() ) {
             <td>
                 <div class='btn-toolbar'>
                     <div class='btn-group'>
-                        <button type='button' class='edit btn btn-sm btn-default' data-id='"."$rows->id"."' href='#'>
+                    <form method='post'>
+                        <input type='hidden' name='id' value='" . $rows->id . "'>
+                        <button type='submit' name='edit' value='Edit' class='edit btn btn-sm btn-default'>
                             <span class='glyphicon glyphicon-pencil'></span>
                         </button>
-                        <button type='button' class='delete btn btn-sm btn-default' data-id='"."$rows->id"."' href='#'>
+                    </form>
+                    <form method='post'>
+                        <input type='hidden' name='id' value='" . $rows->id . "'>
+                        <button type='submit' name='delete' value='Delete' class='delete btn btn-sm btn-default' >
                             <span class='glyphicon glyphicon-trash'></span>
                         </button>
+                    </form>
                     </div>
                 </div>
             </td>
@@ -64,9 +76,12 @@ if ( is_user_logged_in() ) {
     </table>
     </div>
     </div>
-    </div>
-    <div id='formularioProyecto'><div class='modalFormProyecto'></div></div>";
+    </div>";
+
+    include_once('modals.php');
 } else {
+    wp_enqueue_style( 'login' );
+    
     echo "<div class='login wp-core-ui'>
     <div id='login'>";
     wp_login_form();
