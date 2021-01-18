@@ -4,7 +4,7 @@ Plugin Name: Project Bank
 Plugin URI: https://github.com/JesusRoaP/project_bank
 Description: Crea, muestra y administra la tabla wp_project de la base de datos de wordpress.
 Author: Jesus Mauricio Roa Polania
-Version: 2.0
+Version: 3.0
 Author URI: https://github.com/JesusRoaP
 */
 
