@@ -7,7 +7,10 @@ function bp_menu_administrador() {
 add_action( 'admin_menu', 'bp_menu_administrador' );
 
 function project_bank_home() {
-    wp_enqueue_style( 'admin-css' );
+    wp_enqueue_style( 'admin-backend-css' );
+    wp_enqueue_style( 'datatables-pb-css' );
+	wp_enqueue_style( 'iconos-css' );
+	wp_enqueue_style( 'admin-frontend-css' );
 
     include BP_RUTA . 'admin/configuration.php';
 }

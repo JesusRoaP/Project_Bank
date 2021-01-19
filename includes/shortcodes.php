@@ -17,8 +17,8 @@ add_shortcode('project', 'proyecto');
 
 function admin_banco_proyectos() {
 	wp_enqueue_script('datatables-js');
-	wp_enqueue_script('admin-banco-proyectos-js');
-	require_once('admin-banco-proyectos.php');
+	wp_enqueue_script('admin-frontend-js');
+	require_once('admin-frontend.php');
 }
 add_shortcode('project_bank_admin', 'admin_banco_proyectos');
 ?>

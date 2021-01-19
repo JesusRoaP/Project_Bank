@@ -8,16 +8,16 @@ function js_css_register() {
 	wp_register_script('accent-neutralise-js', esc_url(plugins_url('includes/DataTables/accent-neutralise.js', __DIR__)));
 	wp_register_script('banco-proyectos-js', esc_url(plugins_url('public/js/banco-proyectos.js', __DIR__)));
 	wp_register_script('proyecto-js', esc_url(plugins_url('public/js/proyecto.js', __DIR__)));
-	wp_register_script('admin-banco-proyectos-js', esc_url(plugins_url('public/js/admin-banco-proyectos.js', __DIR__)));
+	wp_register_script('admin-frontend-js', esc_url(plugins_url('public/js/admin-frontend.js', __DIR__)));
 
 	wp_register_style('banco-proyectos-css', esc_url(plugins_url('public/css/banco-proyectos.css', __DIR__)));
 	wp_register_style('proyecto-css', esc_url(plugins_url('public/css/proyecto.css', __DIR__)));
-	wp_register_style('admin-banco-proyectos-css', esc_url(plugins_url('public/css/admin-banco-proyectos.css', __DIR__)));
+	wp_register_style('admin-frontend-css', esc_url(plugins_url('public/css/admin-frontend.css', __DIR__)));
 	wp_register_style('datatables-pb-css', esc_url(plugins_url('includes/DataTables/datatables.css', __DIR__)));
 	wp_register_style('searchpanes-datatables-css', esc_url(plugins_url('includes/DataTables/searchPanes.dataTables.min.css', __DIR__)));
 	wp_register_style('select-datatables-css', esc_url(plugins_url('includes/DataTables/select.dataTables.min.css', __DIR__)));
 	wp_register_style('iconos-css', esc_url(plugins_url('public/css/iconos.css', __DIR__)));
-	wp_register_style('admin-css', esc_url(plugins_url('admin/css/admin.css', __DIR__)));
+	wp_register_style('admin-backend-css', esc_url(plugins_url('admin/css/admin-backend.css', __DIR__)));
 	wp_register_style('font-awesome-5-9-0-pb', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css');
 	wp_register_style('fuente-lato', 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap');
 	wp_register_style('material-icons', 'https://fonts.googleapis.com/icon?family=Material+Icons');
@@ -47,8 +47,7 @@ function my_shortcode_styles() {
 	if ( is_a( $post, 'WP_Post' ) && has_shortcode( $post->post_content, 'project_bank_admin' ) ) {
 		wp_enqueue_style( 'datatables-pb-css' );
 		wp_enqueue_style( 'iconos-css' );
-		wp_enqueue_style( 'admin-banco-proyectos-css' );
-		wp_enqueue_style( 'login' );
+		wp_enqueue_style( 'admin-frontend-css' );
     }
 }
 add_action( 'wp_enqueue_scripts', 'my_shortcode_styles' );

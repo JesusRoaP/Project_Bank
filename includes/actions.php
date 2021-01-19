@@ -20,10 +20,10 @@ if (!empty($_POST['save']) && $_POST['save'] == 'Save') {
 	$r = $wpdb->query($wpdb->prepare( "INSERT INTO $table_name (`codigo`, `proyecto`, `autor`, `estado`, `resumen`, `concepto`, `informe_final`, `certi_cumplimiento`, `area`, `modalidad`) VALUES ('$codigo','$proyecto','$autor','$estado','$resumen','$concepto','$informe_final','$certi_cumplimiento','$area','$modalidad')"));
 
 	if ($r) {
-		$type = "success";
+		$type = "updated notice is-dismissible";
         $message = "Proyecto agregado exitosamente";
 	} else {
-		$type = "error";
+		$type = "error notice is-dismissible";
         $message = "Problemas al agregar el proyecto";
 	}
 } 
@@ -34,10 +34,10 @@ if (!empty($_POST['update']) && $_POST['update'] == 'Update') {
 	$r = $wpdb->query($wpdb->prepare("UPDATE $table_name SET `codigo`='$codigo',`proyecto`='$proyecto',`autor`='$autor',`estado`='$estado',`resumen`='$resumen',`concepto`='$concepto',`informe_final`='$informe_final',`certi_cumplimiento`='$certi_cumplimiento',`area`='$area',`modalidad`='$modalidad' WHERE id LIKE '$id'"));
 
 	if ($r) {
-		$type = "success";
+		$type = "updated notice is-dismissible";
         $message = "Proyecto actualizado exitosamente";
 	} else {
-		$type = "error";
+		$type = "error notice is-dismissible";
         $message = "Problemas al actualizar el proyecto";
 	}
 }
@@ -48,10 +48,10 @@ if (!empty($_POST['delete']) && isset($_POST['id']) && is_numeric($_POST['id']))
 	$r = $wpdb->query($wpdb->prepare( "DELETE FROM $table_name WHERE id LIKE '$id'"));
 
 	if ($r) {
-		$type = "success";
+		$type = "updated notice is-dismissible";
         $message = "Proyecto eliminado exitosamente";
 	} else {
-		$type = "error";
+		$type = "error notice is-dismissible";
         $message = "Problemas al eliminar el proyecto";
 	}
 }
@@ -66,10 +66,11 @@ if (isset($_POST["massive-import"])) {
 
         $nombre = $_FILES['file']['name'];
         $guardado = $_FILES['file']['tmp_name'];
-        $targetPath = 'uploads/'.$nombre;
+        $targetPath = BP_RUTA . '/uploads/' . $nombre;
+        $dirPath = BP_RUTA . '/uploads';
     
-        if(!file_exists('uploads')) {
-            mkdir('uploads',0777,true);
+        if(!file_exists($dirPath)) {
+            mkdir($dirPath,0777,true);
             move_uploaded_file($guardado, $targetPath);
         } else {
             move_uploaded_file($guardado, $targetPath);
@@ -105,17 +106,17 @@ if (isset($_POST["massive-import"])) {
                 $r = $wpdb->query($wpdb->prepare( "INSERT INTO $table_name (`codigo`, `proyecto`, `autor`, `estado`, `resumen`, `concepto`, `informe_final`, `certi_cumplimiento`, `area`, `modalidad`) VALUES ('$codigo','$proyecto','$autor','$estado','$resumen','$concepto','$informe_final','$certi_cumplimiento','$area','$modalidad')"));
                 
                 if ($r) {
-                    $type = "success";
+                    $type = "updated notice is-dismissible";
                     $message = "Proyectos importados exitosamente";
                 } 
             } else {
-                $type = "error";
+                $type = "error notice is-dismissible";
                 $message = "Problemas al importar los Proyectos:<br><br> Todos los proyectos de su archivo ya estan cargados en la base de datos. Para actualizar los datos de proyectos existentes diríjase a <a href='#update'><strong>Actualización Masiva</strong></a>.";
             }
         }
 
     } else { 
-    $type = "error";
+    $type = "error notice is-dismissible";
     $message = "Tipo de archivo invalido. Cargar archivo en formato Excel (.xlsx)";
     }
 }
@@ -130,10 +131,11 @@ if (isset($_POST["massive-update"])) {
    
         $nombre = $_FILES['file']['name'];
         $guardado = $_FILES['file']['tmp_name'];
-        $targetPath = 'uploads/'.$nombre;
+        $targetPath = BP_RUTA . '/uploads/' . $nombre;
+        $dirPath = BP_RUTA . '/uploads';
        
-        if(!file_exists('uploads')) {
-            mkdir('uploads',0777,true);
+        if(!file_exists($dirPath)) {
+            mkdir($dirPath,0777,true);
             move_uploaded_file($guardado, $targetPath);
         } else {
             move_uploaded_file($guardado, $targetPath);
@@ -168,17 +170,37 @@ if (isset($_POST["massive-update"])) {
                 $r = $wpdb->query($wpdb->prepare("UPDATE $table_name SET `proyecto`='$proyecto',`autor`='$autor',`estado`='$estado',`resumen`='$resumen',`concepto`='$concepto',`informe_final`='$informe_final',`certi_cumplimiento`='$certi_cumplimiento',`area`='$area',`modalidad`='$modalidad' WHERE codigo LIKE '$codigo'"));
    
                 if ($r) {
-                    $type = "success";
+                    $type = "updated notice is-dismissible";
                     $message = "Proyectos actualizados exitosamente";
                 } 
             } else {
-                $type = "error";
+                $type = "error notice is-dismissible";
                 $message = "Problemas al actualizar los Proyectos:<br><br>Uno o más proyectos pueden no estar cargados en la base de datos, si es así carguelos en la sección <a href='#import'><strong>Importación Masiva</strong></a>. Sin embargo, si cargo conjuntamente proyectos ya existentes, estos se actualizaron exitosamente.";
             }
         }
    
     } else { 
-       $type = "error";
+       $type = "error notice is-dismissible";
        $message = "Tipo de archivo invalido. Cargar archivo en formato Excel (.xlsx)";
     }
+}
+
+// Limpiar Medios
+
+if (!empty($_POST['delete-files']) && $_POST['delete-files'] == 'Delete Files') {
+    $filesPath = BP_RUTA . '/uploads/*';
+    $files = glob($filesPath);
+
+    foreach ($files as $file) {
+        if (is_file($file))
+        $r = unlink($file);
+    }
+
+    if ($r) {
+		$type = "updated notice is-dismissible";
+        $message = "Carpeta de medios limpiada exitosamente";
+	} else {
+		$type = "error notice is-dismissible";
+        $message = "Problemas al limpiar carpeta de medios";
+	}
 }

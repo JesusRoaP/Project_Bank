@@ -9,7 +9,7 @@ if (!empty($_POST['edit']) && $_POST['edit'] == 'Edit') {
     <form id="formProyecto" method="post" class="form">
       <div class="pb-modal-header">
         Editar Proyecto
-        <button type="button" class="hideForm glyphicon glyphicon-remove" href="#"></button>
+        <button type="button" class="button hideForm glyphicon glyphicon-remove" href="#"></button>
       </div>
       <div class="pb-modal-body">
         <input type="hidden" name="id" value="<?= $id ?>" />
@@ -88,7 +88,7 @@ if (!empty($_POST['edit']) && $_POST['edit'] == 'Edit') {
     <form id="formProyecto" method="post" class="form">
       <div class="pb-modal-header">
         Agregar Proyecto
-        <button type="button" class="hideForm glyphicon glyphicon-remove" href="#"></button>
+        <button type="button" class="button hideForm glyphicon glyphicon-remove" href="#"></button>
       </div>
       <div class="pb-modal-body">
         <input type="hidden" name="id" value="" />
